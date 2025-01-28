@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: lemonchiffon;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(45deg, brown, #f06595, #845ec2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .text {
+            font-size: 32px;
+            color: lavender;
+            font-weight: bold;
+            animation: slideText 5s linear infinite;
+        }
+
+        @keyframes slideText {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #f1f1f1;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        .flip-card-back {
+            background-color: palevioletred;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .box {
+            width: 80px;
+            height: 80px;
+            margin-top: 100px;
+            background-color: purple;
+            transition: width 0.5s ease, height 0.5s ease, background-color 0.3s ease;
+        }
+
+        .box:hover {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 10px solid green;
+            border-top: 10px solid lightcoral;
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite, grow-shrink 3s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes grow-shrink {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .btn {
+            border: none;
+            margin-top: 10px;
+            border-radius: 5px;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            transition: background-color 0.5s ease-in-out, transform 0.3s;
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .btn:hover {
+            background-color: brown;
+            transform: scale(1.1);
+        }
+
+        .ribbon {
+            width: 70px;
+            font-size: 14px;
+            padding: 4px;
+            position: absolute;
+            right: -25px;
+            top: -5px;
+            text-align: center;
+            border-radius: 25px;
+            transform: rotate(20deg);
+            background-color: lightpink;
+            color: white;
+        }
+
+        .calculate-area {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+        }
+        @keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate {
+  animation: bounce 1s ease-in-out infinite;
+}
+       #flip {
+            margin-top: 120px;
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #f06595;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #flip:hover {
+            background-color: #845ec2;
+        }
+        #toggleBtn {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #toggleBtn:hover {
+            background-color: darkblue;
+        }
+
+        #res {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="text">Welcome to PLP ACADEMY</div>
+    </div>
+
+    <div class="container">
+        <div class="flip-card">
+            <div id="flip-card-inner" class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="welcome.png" alt="Welcome" style="width:300px;height:300px;">
+                </div>
+                <div class="flip-card-back">
+                    <h1>Welcome</h1>
+                    <p>Do you love coding?</p>
+                    <p>I love coding</p>
+                </div>
+            </div>
+            <button id="flip">Flip the card</button>
+        </div>
+
+        <div>
+            <div id="animated" class="box">This is a box</div>
+             <button id="toggleBtn">Toggle</button>
+            <div id="spinner" class="spinner">Spin</div>
+        </div>
+    </div>
+
+    <div class="calculate-area">
+        <button onclick="calculateArea()">Find area</button>
+    </div>
+
+    <h3 id="res">The area of the square is:</h3>
+
+    <div class="btn-container">
+        <button class="btn">THIS IS A RIBBON<span class="ribbon">WELCOME</span></button>
+    </div>
+
+   
+
+    <script src="function.js"></script>
+</body>
+</html>
